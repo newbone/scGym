@@ -1,0 +1,73 @@
+
+entity Excercise {
+	excerciseName String
+}
+
+entity GymSession {
+	date Date
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Gym {
+	gymName	String
+	streetAddress String
+	postalCode String
+	city String
+	stateProvince String
+}
+
+
+/**
+ * Task entity.
+ * @author The JHipster team.
+ */
+entity Program {
+	title String
+	description String
+}
+
+/**
+ * The User entity.
+ */
+entity User {
+	/**
+	* The firstname attribute.
+	*/
+	firstName String
+	lastName String
+	email String
+	phoneNumber String
+	
+}
+
+
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	Program to Excercise{excerciseName}
+
+}
+relationship OneToOne {
+	GymSession to Gym{GymName}
+
+}
+relationship OneToMany {
+	GymSession to Program{title}
+
+}
+
+relationship OneToMany {
+	User to GymSession{GymName}
+
+}
+
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
